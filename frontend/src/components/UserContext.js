@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import api from "../../api/axiosConfig";
+import api from "../api/axiosConfig";
 
 export const UserContext = createContext();
 
