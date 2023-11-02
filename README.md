@@ -1,4 +1,4 @@
-# Bank Web Application
+# Bank Application
 
 ## Overview
 
