@@ -35,7 +35,7 @@ const Home = () => {
     api
       .get(`/api/v1/user/${userID}`)
       .then((response) => {
-        setUser(response.data);
+        //setUser(response.data);
         console.log(user);
       })
       .catch((error) => {

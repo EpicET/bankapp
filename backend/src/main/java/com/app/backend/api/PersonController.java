@@ -18,7 +18,7 @@ import com.app.backend.model.Person;
 import com.app.backend.service.AccountService;
 import com.app.backend.service.PersonService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin("*")
 @RequestMapping("api/v1/user")
 @RestController
 
