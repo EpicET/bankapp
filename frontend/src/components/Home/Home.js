@@ -11,8 +11,7 @@ import PieChart from "./PieChart";
 import AccList from "./AccList";
 import OpenAccount from "./OpenAccount";
 import "./Home.css";
-//import AccountsHistory from "./AccountsHistory";
-//import Header from "../Header";
+
 import Exchange from "./Exchange";
 
 const Home = () => {

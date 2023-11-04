@@ -1,21 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import { Alert } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import { UserContextProvider } from "./UserContext";
 import AccountBox from "./AccountBox";
-import Col from "react-bootstrap/Col";
 import "./FrontPage.css";
 
 const FrontPage = () => {
   const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const [error, setError] = useState(null);
 
   return (
     <UserContextProvider userData={{ userID, password }}>
