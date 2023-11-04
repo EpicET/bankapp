@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Deposit from "./Deposit";
-import Withdraw from "./Withdraw";
+import Deposit from "../Transactions/Deposit";
+import Withdraw from "../Transactions/Withdraw";
 import { Accordion } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Nav } from "react-bootstrap";

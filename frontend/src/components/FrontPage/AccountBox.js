@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import api from "../api/axiosConfig";
+import api from "../../api/axiosConfig";
 
-import { UserContextProvider } from "./UserContext";
+import { UserContextProvider } from "../UserContext";
 
 import { Alert } from "react-bootstrap";
 import Button from "react-bootstrap/Button";

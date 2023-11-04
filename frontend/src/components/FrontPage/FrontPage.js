@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { UserContextProvider } from "./UserContext";
+import { UserContextProvider } from "../UserContext";
 import AccountBox from "./AccountBox";
 import "./FrontPage.css";
 

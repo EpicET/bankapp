@@ -11,8 +11,9 @@ import PieChart from "./PieChart";
 import AccList from "./AccList";
 import OpenAccount from "./OpenAccount";
 import "./Home.css";
+import Header from "./Header";
 
-import Exchange from "./Exchange";
+import Exchange from "../Exchange/Exchange";
 
 const Home = () => {
   const [user, setUser] = useState([]);
@@ -74,7 +75,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      {/* <Header password={password} /> */}
+      <Header password={password} />
       <Container>
         <Row className="mb-5">
           <h2>Welcome {userID}</h2>
@@ -91,11 +92,7 @@ const Home = () => {
           </Col>
           <Col key={3}>
             <Card style={{ width: "32rem" }} className="mb-2">
-              {accList.length > 0 ? (
-                <PieChart accounts={accList} />
-              ) : (
-                <Card.Header>No accounts</Card.Header>
-              )}
+              <PieChart accounts={accList} />
             </Card>
           </Col>
           <Col key={4}>
