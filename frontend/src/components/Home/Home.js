@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
-import Transfer from "./Transfer";
+import Transfer from "../Transactions/Transfer";
 import { api } from "../../api/axiosConfig";
 import PieChart from "./PieChart";
 import AccList from "./AccList";
@@ -16,8 +16,7 @@ import Exchange from "../Exchange/Exchange";
 
 const Home = () => {
   const [user, setUser] = useState([]);
-  //const { user, updateUser, fetchUser } = useContext(UserContext);
-  //const { userID, password, accList } = user;
+
   const { userID } = useParams();
   const [password, setPassword] = useState();
   const [accList, setAccList] = useState([]);
@@ -33,7 +32,6 @@ const Home = () => {
       .then((response) => {
         console.log(response);
         setUser(response.data);
-        //fetchUser();
       })
       .catch((error) => {
         console.error(error);
@@ -74,7 +72,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <Header password={password} />
+      <Header userID={userID} password={password} />
       <Container>
         <Row className="mb-5">
           <h2>Welcome {userID}</h2>
@@ -95,9 +93,6 @@ const Home = () => {
             </Card>
           </Col>
           <Col key={4}>
-            {/* <Card className="mb-4">
-              <AccountsHistory accounts={accList} />
-            </Card> */}
             <Card border="dark" className="mb-2">
               <Exchange />
             </Card>

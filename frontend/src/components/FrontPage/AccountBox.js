@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/axiosConfig";
 
-import { UserContextProvider } from "../UserContext";
-
 import { Alert } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -77,14 +75,8 @@ const AccountBox = () => {
   return (
     <Card style={{ width: "35rem" }} bg="secondary" text="light">
       <Card.Body>
-        <Tabs
-          defaultActiveKey="create"
-          id="uncontrolled-tab-example"
-          className="mb-3"
-          fill
-        >
+        <Tabs defaultActiveKey="create" className="mb-3" fill>
           <Tab eventKey="create" title="Create Account">
-            {/* <Card.Title className="fs-3 mb-4">Create Account</Card.Title> */}
             <Form>
               <Form.Group as={Row} className="mb-3 justify-content-md-center">
                 <Form.Label column sm={6}>
@@ -98,11 +90,7 @@ const AccountBox = () => {
                 </Col>
               </Form.Group>
 
-              <Form.Group
-                as={Row}
-                className="mb-3 justify-content-md-center"
-                controlId="formHorizontalPassword"
-              >
+              <Form.Group as={Row} className="mb-3 justify-content-md-center">
                 <Form.Label column>Enter password:</Form.Label>
                 <Col sm={6}>
                   <Form.Control
@@ -128,7 +116,6 @@ const AccountBox = () => {
             </Form>
           </Tab>
           <Tab eventKey="log" title="Log In">
-            {/* <Card.Title className="fs-3 mb-4">Log In</Card.Title> */}
             <Form>
               <Form.Group as={Row} className="mb-3 justify-content-md-center">
                 <Form.Label column sm={6}>
@@ -142,11 +129,7 @@ const AccountBox = () => {
                 </Col>
               </Form.Group>
 
-              <Form.Group
-                as={Row}
-                className="mb-3 justify-content-md-center"
-                controlId="formHorizontalPassword"
-              >
+              <Form.Group as={Row} className="mb-3 justify-content-md-center">
                 <Form.Label column>Enter password:</Form.Label>
                 <Col sm={6}>
                   <Form.Control

@@ -30,9 +30,7 @@ export default function ProfileManage({ userID, password, ...props }) {
     event.preventDefault();
     api
       .delete(`/api/v1/user/${userID}/deleteAll`)
-      .then((response) => {
-        // console.log(response.data);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.error(error);
         setShowD(false);
@@ -40,9 +38,7 @@ export default function ProfileManage({ userID, password, ...props }) {
 
     api
       .delete(`/api/v1/user/${userID}`)
-      .then((response) => {
-        //console.log(response.data);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.error(error);
         setShowD(false);

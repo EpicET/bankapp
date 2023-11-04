@@ -33,7 +33,6 @@ export default function Withdraw(props) {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
-        //console.log(response.data);
         setError(null);
         setAmount(0);
         props.updateAccount(response.data);

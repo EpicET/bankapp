@@ -62,7 +62,7 @@ public class PersonController {
         if (personService.checkforUser(user) && personService.checkforUserPassword(user)) {
             return ResponseEntity.ok("Logged in");
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Either incorrect UserID or incorrect password");
         }
     }
