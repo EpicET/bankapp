@@ -13,10 +13,7 @@ export default function LineChart({ accountID, transHistory }) {
 
     Object.entries(transHistory).forEach(([key, value]) => {
       transactionLabels.push(key);
-      const words = value.split(" ");
-      if (words.length > 0) {
-        transactionAmounts.push(parseFloat(words[1]));
-      }
+      transactionAmounts.push(value.amount);
     });
 
     setLabels(transactionLabels);

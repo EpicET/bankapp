@@ -9,6 +9,15 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    @Override
     public String toString() {
         return type + " " + amount;
     }

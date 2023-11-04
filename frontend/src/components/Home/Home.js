@@ -32,6 +32,7 @@ const Home = () => {
       .post(`/api/v1/user/${userID}/${type}`)
       .then((response) => {
         console.log(response);
+        setUser(response.data);
         //fetchUser();
       })
       .catch((error) => {

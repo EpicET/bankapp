@@ -74,6 +74,7 @@ const Account = () => {
           setBalance(value);
         } else if (key === "transHistory") {
           setTransHistory(value);
+          console.log(transHistory);
         }
       });
     }
@@ -123,11 +124,8 @@ const Account = () => {
                       Object.entries(transHistory).map(([key, value]) => (
                         <tr key={key}>
                           <td>{key}</td>
-                          {value.split(" ").map((word, index) => (
-                            <td>
-                              <span key={index}>{word}</span>
-                            </td>
-                          ))}
+                          <td>{value.type}</td>
+                          <td>{value.amount}</td>
                         </tr>
                       ))}
                   </tbody>

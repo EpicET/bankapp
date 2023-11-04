@@ -51,10 +51,15 @@ public class AccountController {
     }
 
     @PutMapping(path = "{accountID}/deposit")
-    public ResponseEntity<Account> deposit(@PathVariable("accountID") int accountID, @RequestBody float amount) {
-        accountServices.depositAmount(accountID, amount);
-        return new ResponseEntity<Account>(accountServices.getAccount(accountID), HttpStatus.OK);
-
+    public ResponseEntity<?> deposit(@PathVariable("accountID") int accountID, @RequestBody float amount) {
+        try {
+            accountServices.depositAmount(accountID, amount);
+            return new ResponseEntity<Account>(accountServices.getAccount(accountID), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<String>("Error while depositing amount: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping(path = "{accountID}/withdraw")
