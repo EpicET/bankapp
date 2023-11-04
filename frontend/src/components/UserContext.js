@@ -4,16 +4,17 @@ import api from "../api/axiosConfig";
 export const UserContext = createContext();
 
 export const UserContextProvider = ({ userData, children }) => {
-  const [user, setUser] = useState({
-    userID: userData.userID,
-    password: userData.password,
-    accList: [],
-  });
+  // const [user, setUser] = useState({
+  //   userID: userData.userID,
+  //   password: userData.password,
+  //   accList: [],
+  // });
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const getUser = () => {
       api
-        .get(`/api/v1/user/${user.userID}`)
+        .get(`/api/v1/user/${userData.userID}`)
         .then((response) => {
           setUser(response.data);
           console.log(user);

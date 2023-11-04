@@ -15,15 +15,24 @@ import "./Home.css";
 import Exchange from "./Exchange";
 
 const Home = () => {
-  const { user, updateUser, fetchUser } = useContext(UserContext);
-  const { userID, password, accList } = user;
+  const [user, setUser] = useState([]);
+  //const { user, updateUser, fetchUser } = useContext(UserContext);
+  //const { userID, password, accList } = user;
+  const { userID } = useParams();
+  const [password, setPassword] = useState();
+  const [accList, setAccList] = useState([]);
+  const [accNum, setAccNum] = useState();
+
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+  };
 
   function openAcc(type) {
     api
       .post(`/api/v1/user/${userID}/${type}`)
       .then((response) => {
         console.log(response);
-        fetchUser();
+        //fetchUser();
       })
       .catch((error) => {
         console.error(error);
@@ -34,7 +43,7 @@ const Home = () => {
     api
       .get(`/api/v1/user/${userID}`)
       .then((response) => {
-        //setUser(response.data);
+        setUser(response.data);
         console.log(user);
       })
       .catch((error) => {
@@ -43,8 +52,24 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchUser();
+    getUser();
   }, [userID]);
+
+  useEffect(() => {
+    if (user) {
+      Object.entries(user).forEach(([key, value]) => {
+        if (key === "userID") {
+          user.id = value;
+        } else if (key === "password") {
+          setPassword(value);
+        } else if (key === "accountList") {
+          setAccList(value);
+        } else if (key === "numOfAccounts") {
+          setAccNum(value);
+        }
+      });
+    }
+  }, [user]);
 
   return (
     <div className="Home">
@@ -61,11 +86,15 @@ const Home = () => {
             </Card>
           </Col>
           <Col key={2}>
-            <Transfer user={user} getUser={fetchUser} updateUser={updateUser} />
+            <Transfer user={user} getUser={getUser} updateUser={updateUser} />
           </Col>
           <Col key={3}>
             <Card style={{ width: "32rem" }} className="mb-2">
-              <PieChart accounts={accList} />
+              {accList.length > 0 ? (
+                <PieChart accounts={accList} />
+              ) : (
+                <Card.Header>No accounts</Card.Header>
+              )}
             </Card>
           </Col>
           <Col key={4}>
