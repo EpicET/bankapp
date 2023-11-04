@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { UserContext } from "../UserContext";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";

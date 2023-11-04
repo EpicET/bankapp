@@ -62,8 +62,6 @@ const Account = () => {
       });
   }, [accountID, userID]);
 
-  const lastTenTransactions = Object.entries(transHistory).slice(-10);
-
   useEffect(() => {
     if (account) {
       Object.entries(account).forEach(([key, value]) => {
