@@ -30,7 +30,6 @@ const Home = () => {
     api
       .post(`/api/v1/user/${userID}/${type}`)
       .then((response) => {
-        console.log(response);
         setUser(response.data);
       })
       .catch((error) => {
@@ -43,7 +42,6 @@ const Home = () => {
       .get(`/api/v1/user/${userID}`)
       .then((response) => {
         setUser(response.data);
-        console.log(user);
       })
       .catch((error) => {
         console.error(error);

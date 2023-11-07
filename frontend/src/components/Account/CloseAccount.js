@@ -31,12 +31,10 @@ export default function DeleteAccount(props) {
   return (
     <div>
       <Button variant="dark" onClick={handleShow}>
-        {" "}
         Close Account
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          {" "}
           <Modal.Title style={{ textAlign: "center" }}>
             Close Account
           </Modal.Title>

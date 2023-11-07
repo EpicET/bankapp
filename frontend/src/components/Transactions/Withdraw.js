@@ -46,7 +46,7 @@ export default function Withdraw(props) {
 
   return (
     <div>
-      <Form.Group as={Row} className="mb-3 " controlId="formHorizontalEmail">
+      <Form.Group as={Row} className="mb-3 ">
         <Form.Label column sm={5}>
           Enter an amount:
         </Form.Label>

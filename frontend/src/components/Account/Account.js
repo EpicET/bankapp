@@ -82,7 +82,7 @@ const Account = () => {
     <div className="Home">
       <Navbar bg="dark" variant="dark" className="mb-5">
         <Container>
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse>
             <Nav className="me-auto">
               <Nav.Link onClick={handleClick}>Back</Nav.Link>
             </Nav>
