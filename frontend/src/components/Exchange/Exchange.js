@@ -1,37 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import { exchange } from "../../api/axiosConfig";
+import Button from "react-bootstrap/Button";
 
 const Exchange = () => {
   const [amount, setAmount] = useState(0);
-  const [rate, setRate] = useState(0);
-  const [newAmount, setNewAmount] = useState(0);
+  const [newAmount, setNewAmount] = useState();
   const [result, setResult] = useState();
   const [curr1, setCurr1] = useState();
   const [curr2, setCurr2] = useState();
 
-  const converter = (curr1, curr2, amount) => {
-    // exchange
-    //   .get(`v6/${exchange_key}/pair/${curr1}/${curr2}/${amount}`, {
-    //     headers: { "Content-Type": "application/json" },
-    //   })
-    //   .then((response) => {
-    //     setResult(response.data);
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+  const exchange_key = process.env.EXCHANGE_KEY;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    exchange
+      .get(`v6/${exchange_key}/pair/${curr1}/${curr2}/${amount}`)
+      .then((response) => {
+        setResult(response.data);
+        setNewAmount(result.conversion_result);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
-  useEffect(() => {
-    if (curr1 && curr2 && amount) {
-      converter(curr1, curr2, amount);
-    }
-  }, [curr1, curr2, amount]);
+  // const converter = (curr1, curr2, amount) => {};
+
+  // useEffect(() => {
+  //   if (curr1 && curr2 && amount) {
+  //     converter(curr1, curr2, amount);
+  //   }
+  // }, [curr1, curr2, amount]);
 
   return (
     <div>
@@ -41,10 +46,7 @@ const Exchange = () => {
       <Card.Body>
         <Form.Group as={Row} className="mb-1 justify-content-center">
           <Col sm={5}>
-            <Form.Select
-              aria-label="Default select example"
-              onChange={(e) => setCurr1(e.target.value)}
-            >
+            <Form.Select onChange={(e) => setCurr1(e.target.value)}>
               <option>Currencies</option>
               <option value="USD">(USD) US Dollar</option>
               <option value="GBP">(GBP) British Pound</option>
@@ -62,10 +64,7 @@ const Exchange = () => {
         </Form.Group>
         <Form.Group as={Row} className="mb-1 justify-content-center">
           <Col sm={5}>
-            <Form.Select
-              aria-label="Default select example"
-              onChange={(e) => setCurr2(e.target.value)}
-            >
+            <Form.Select onChange={(e) => setCurr2(e.target.value)}>
               <option>Currencies</option>
               <option value="USD">(USD) US Dollar</option>
               <option value="GBP">(GBP) British Pound</option>
@@ -75,10 +74,18 @@ const Exchange = () => {
             </Form.Select>
           </Col>
           <Form.Label column sm={4}>
-            {/* {converter(curr1, curr2, amount)} */}
             {newAmount}
           </Form.Label>
         </Form.Group>
+        <Row className="justify-content-md-center">
+          <Col sm={2}>
+            <Button
+              variant="dark"
+              onClick={handleSubmit}
+              className="mb-3"
+            ></Button>
+          </Col>
+        </Row>
       </Card.Body>
     </div>
   );
