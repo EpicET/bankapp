@@ -92,7 +92,7 @@ const Home = () => {
           </Col>
           <Col key={4}>
             <Card border="dark" className="mb-2">
-              <Exchange />
+              {/* <Exchange /> */}
             </Card>
           </Col>
         </Row>
